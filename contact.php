@@ -9,7 +9,6 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
     />
-
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
@@ -18,12 +17,13 @@
     <!-- Harici CSS -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body class="cvBody">
+  <body class="contactBody">
     <!-- ✅ NAVBAR BURAYA EKLENİR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark cvNavBar fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark contactNavBar fixed-top">
+      <div class="overlay"></div>
       <div class="container-fluid">
         <a class="navbar-brand ps-2" href="index.html"
-          ><i class="bi bi-person-bounding-box me-3"></i>CV, Özgeçmişim</a
+          ><i class="bi bi-telephone-fill me-3 fs-5"></i>İletişim</a
         >
         <button
           class="navbar-toggler"
@@ -57,7 +57,7 @@
     </nav>
 
     <!-- ✅ NAVBAR SABİT OLDUĞU İÇİN ALTA BOŞLUK BIRAK -->
-    <div class="container" style="padding-top: 70px">
+    <div class="container-fluid" style="padding-top: 70px">
       <!-- Buraya sayfa içeriğin gelecek -->
       <h1>Hoş Geldiniz!</h1>
       <p>Bu sayfa hakkında bilgiler burada olacak.</p>
