@@ -60,33 +60,133 @@
       </div>
     </nav>
 
-    <!-- İÇERİKLERİN BULUNACAĞI VARSAYILAN BİR KUTUCUK -->
-    <div class="container-fluid" style="padding-top: 70px">
-      <div class="row">
-        <div class="d-none d-md-block col-md-1"></div>
-        <div class="col-12 col-md-10 text-white indexIcerikBg">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-2">image</div>
-              <div class="col-md-10 p-4">
-                <p class="h2">BAŞLIK</p>
-                <p class="h5">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Unde, nisi. Cum repudiandae animi, veritatis totam voluptate
-                  quisquam rem distinctio porro, sunt necessitatibus adipisci
-                  dolorum, alias incidunt officia illo quasi quod quibusdam
-                  repellendus. Ut rem hic provident. Corrupti, alias similique
-                  reprehenderit amet excepturi velit? Dicta tenetur sed dolorem
-                  animi sunt quos sapiente culpa facilis tempore, doloribus modi
-                  quas quis officia nemo consequatur vero reprehenderit in amet?
-                </p>
-              </div>
+    <main class="container pt-7 pb-5 index-dark">
+      <!-- HAKKIMDA -->
+      <div class="row align-items-center mb-5 index-bubble">
+        <div class="col-12 col-md-4 text-center mb-4 mb-md-0">
+          <img
+            src="img/profil.jpg"
+            alt="Profil Fotoğrafı"
+            class="rounded-circle mb-3"
+            width="160"
+            height="160"
+          />
+          <h3 class="h4 index-title">
+            <i class="bi bi-person-fill me-2"></i>
+            Ad Soyad
+          </h3>
+        </div>
+        <div class="col-12 col-md-8">
+          <h3 class="h3 mb-3 index-title">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            Hakkımda
+          </h3>
+          <p class="index-text">
+            Buraya kendinizle ilgili kısa bir tanıtım yazısı ekleyin. Eğitim
+            geçmişiniz, kariyer hedefleriniz, ilgi alanlarınız ve sizi sizi
+            yapan en önemli özelliklerinizden bahsedebilirsiniz.
+          </p>
+        </div>
+      </div>
+
+      <!-- KARİYER HEDEFİ -->
+      <section class="mt-4 index-bubble">
+        <h3 class="h3 mb-3 index-title">
+          <i class="bi bi-briefcase-fill me-2"></i>
+          Kariyer Hedefi
+        </h3>
+        <p class="index-text">
+          Burada kariyerinizle ilgili kısa bir hedef veya vizyon ifadesi
+          paylaşabilirsiniz.
+        </p>
+      </section>
+
+      <!-- EĞİTİM -->
+      <section class="mt-4 index-bubble">
+        <h3 class="h3 mb-3 index-title">
+          <i class="bi bi-mortarboard-fill me-2"></i>
+          Eğitim
+        </h3>
+        <p class="index-text">
+          Üniversite, bölüm ve mezuniyet tarihi bilgilerinizi buraya ekleyin.
+        </p>
+      </section>
+
+      <!-- YETENEKLER -->
+      <section class="mt-4 index-bubble">
+        <h3 class="h3 mb-3 index-title">
+          <i class="bi bi-lightning-charge-fill me-2"></i>
+          Yetenekler
+        </h3>
+        <p class="index-text">
+          Sahip olduğunuz başlıca teknik veya kişisel yetenekleri listeleyin.
+        </p>
+      </section>
+
+      <!-- TEMEL BİLGİLER -->
+      <section id="personal-info" class="mt-4 index-bubble">
+        <h3 class="h3 mb-3 index-title">
+          <i class="bi bi-card-list me-2"></i>
+          Temel Bilgiler
+        </h3>
+        <div class="row row-cols-2 row-cols-lg-3 g-3">
+          <div class="col">
+            <div class="index-info-bubble p-3">
+              <strong class="index-text-bold">
+                <i class="bi bi-calendar-event-fill me-1"></i>
+                Doğum Tarihi:
+              </strong>
+              DD.MM.YYYY
+            </div>
+          </div>
+          <div class="col">
+            <div class="index-info-bubble p-3">
+              <strong class="index-text-bold">
+                <i class="bi bi-geo-alt-fill me-1"></i>
+                Lokasyon:
+              </strong>
+              Şehir, Ülke
+            </div>
+          </div>
+          <div class="col">
+            <div class="index-info-bubble p-3">
+              <strong class="index-text-bold">
+                <i class="bi bi-envelope-fill me-1"></i>
+                E-posta:
+              </strong>
+              email@ornek.com
+            </div>
+          </div>
+          <div class="col">
+            <div class="index-info-bubble p-3">
+              <strong class="index-text-bold">
+                <i class="bi bi-telephone-fill me-1"></i>
+                Telefon:
+              </strong>
+              +90 5XX XXX XX XX
+            </div>
+          </div>
+          <div class="col">
+            <div class="index-info-bubble p-3">
+              <strong class="index-text-bold">
+                <i class="bi bi-globe2 me-1"></i>
+                Web Sitesi:
+              </strong>
+              www.ornek.com
+            </div>
+          </div>
+          <div class="col">
+            <div class="index-info-bubble p-3">
+              <strong class="index-text-bold">
+                <i class="bi bi-translate me-1"></i>
+                Diller:
+              </strong>
+              Türkçe (AN), İngilizce (İY)
             </div>
           </div>
         </div>
-        <div class="d-none d-md-block col-md-1"></div>
-      </div>
-    </div>
+      </section>
+    </main>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
