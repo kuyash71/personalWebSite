@@ -1,0 +1,304 @@
+body {
+  font-family: "Bahnschrift", sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+.indexBody {
+  background-color: rgba(15, 15, 15, 1);
+}
+#of {
+  background: linear-gradient(to bottom, #e9eefb, #d8e6f7);
+}
+#macka {
+  background: linear-gradient(to bottom, #d8e6f7, #e9eefb);
+}
+#caykara {
+  background: linear-gradient(to bottom, #e9eefb, #d8e6f7);
+}
+#akcaabat {
+  background: linear-gradient(to bottom, #d8e6f7, #e9eefb);
+}
+#ortahisar {
+  background: linear-gradient(to bottom, #e9eefb, #d8e6f7);
+}
+.indexIcerikBg {
+  background-color: rgba(20, 20, 20, 1);
+  border-radius: 5%;
+}
+.sehirTabelaResim {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.sehirVeriBubble {
+  border-radius: 3rem;
+}
+.sehirIlceBg {
+  background-color: rgb(255, 255, 255);
+  border-radius: 2%;
+}
+.sehirIcerikBg {
+  background: linear-gradient(to bottom, #2a85be, #69adc1);
+}
+.contactBody {
+  background-color: rgb(189, 236, 206);
+}
+.cvBody {
+  background: linear-gradient(to right, #fffae2, #e9eeff);
+}
+.ilgiBody {
+  background-color: rgb(254, 245, 255);
+}
+.loginBody {
+  background-color: rgb(255, 254, 231);
+}
+.mirasBody {
+  background-color: rgb(203, 199, 255);
+}
+.sehirBody {
+  background-color: white;
+}
+.navbar-nav .nav-link {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.tsNavBar {
+  background: none !important;
+  background-image: linear-gradient(
+    to right,
+    rgba(90, 14, 39, 0.6),
+    rgba(117, 183, 229, 0.6)
+  ) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease;
+}
+.sehirNavBar {
+  background: none !important;
+  background-image: linear-gradient(
+    to right,
+    rgba(139, 0, 0, 0.6),
+    rgba(0, 91, 172, 0.6)
+  ) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease;
+}
+.cvNavBar {
+  background: none !important;
+  background-image: linear-gradient(
+    to right,
+    rgba(16, 12, 15, 0.6),
+    rgba(56, 32, 118, 0.6)
+  ) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease;
+}
+.ilgiNavBar {
+  background: none !important;
+  background-image: linear-gradient(
+    to right,
+    rgba(149, 24, 110, 0.6),
+    rgba(0, 91, 172, 0.6)
+  ) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease;
+}
+.indexNavBar {
+  background: none !important;
+  background-image: linear-gradient(
+    to right,
+    rgba(14, 14, 14, 0.6),
+    rgba(61, 61, 61, 0.6)
+  ) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease;
+}
+.loginNavBar {
+  background: none !important;
+  background-image: linear-gradient(
+    to right,
+    rgba(147, 147, 23, 0.6),
+    rgba(113, 86, 19, 0.6)
+  ) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease;
+}
+.contactNavBar {
+  background: none !important;
+  background-image: linear-gradient(
+    to right,
+    rgba(18, 113, 13, 0.6),
+    rgba(20, 146, 151, 0.6)
+  ) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease;
+}
+
+.sehirBubble {
+  background: linear-gradient(to bottom right, #ffffff, #f7f9ff);
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sehirBubble:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+/* Okları büyüt */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  transform: scale(1.5);
+}
+
+.ilceCard {
+  background-color: #ffffff;
+  border-left: 10px solid #005bac;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.ilceCard:hover {
+  border-color: #8b0000;
+  transform: translateY(-5px);
+}
+
+.hero-title {
+  font-size: 4rem;
+  background: linear-gradient(to right, #b0cffc, #fc9f9f);
+  background-clip: text; /* 🔹 STANDART olan */
+  -webkit-background-clip: text; /* 🔹 Safari / Chrome için */
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.akyazi-title {
+  font-size: 4rem;
+  background: linear-gradient(to right, #ffffff, #d39d3f);
+  background-clip: text; /* 🔹 STANDART olan */
+  -webkit-background-clip: text; /* 🔹 Safari / Chrome için */
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Başlığı büyüt ve arka planı netleştir */
+.carousel-caption h5 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(to right, #8b0000, #005bac);
+  padding: 0.5rem 1.5rem;
+  border-radius: 3rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+
+  display: inline-block;
+  max-width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Sliderın üst boşluğunu sıfırla */
+#sehirSlider {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+/* Menü arası boşluk */
+.tsNavBar .nav-link {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.hero-container {
+  max-height: 700px;
+  overflow: hidden;
+}
+
+.hero-image {
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.vinyet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0) 30%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  z-index: 1;
+}
+
+/* Renk geçişi için */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%) !important;
+}
+
+/* Profil fotoğrafı sınırı */
+#hero {
+  margin-top: -56px; /* navbar yüksekliği kadar yukarı kaydır */
+  padding-top: 56px; /* aynı kadar içerik itele */
+}
+
+/* Section başlık alt çizgisi ve kart gölgeleri */
+h2.border-bottom {
+  border-color: #2575fc !important;
+}
+.card,
+.bg-white.rounded.shadow-sm {
+  transition: transform 0.3s;
+}
+.card:hover,
+.bg-white.rounded.shadow-sm:hover {
+  transform: translateY(-5px);
+}
+
+.index-dark {
+  color: #e0e0e0;
+  padding-top: 5rem;
+}
+
+.index-bubble {
+  background-color: #1f1f1f;
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Mini-baloncuklar için */
+.index-info-bubble {
+  background-color: #2a2a2a;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Başlık ve metin renkleri */
+.index-title {
+  color: #ffffff;
+}
+.index-text-bold {
+  color: #cccccc;
+}
