@@ -55,7 +55,21 @@ html {
   background-color: rgb(255, 254, 231);
 }
 .mirasBody {
-  background-color: rgb(203, 199, 255);
+  /* Temel beyaz arkaplan */
+  background-color: #0c0c0c;
+
+  /* Solda hafif kırmızı, ortada beyaz, sağda hafif mavi gradyan */
+  background-image: linear-gradient(
+    to right,
+    /* Soldaki kırmızı gradyanın opaklığı ve uzunluğu */ rgba(255, 0, 0, 0.3) 0%,
+    rgba(255, 0, 0, 0) 15%,
+
+    /* Ortadaki saf beyaz bölge */ #0c0c0c 15%,
+    #0c0c0c 85%,
+
+    /* Sağdaki mavi gradyanın opaklığı ve uzunluğu */ rgba(0, 0, 255, 0) 85%,
+    rgba(0, 0, 255, 0.3) 100%
+  );
 }
 .sehirBody {
   background-color: white;
@@ -221,13 +235,14 @@ html {
 }
 
 .hero-container {
-  max-height: 700px;
-  overflow: hidden;
+  position: relative; /* overlay ve absoluteları doğru hizalaması için */
+  height: 100vh; /* görsel alanı tam ekran yüksekliği */
+  overflow: hidden; /* taşan kısımları gizle */
 }
-
 .hero-image {
-  height: 100%;
-  object-fit: cover;
+  width: 100%; /* yatayda tam sığsın */
+  height: 100%; /* container’ın tüm yüksekliğini kaplasın */
+  object-fit: cover; /* kırpma + ölçekleme */
   filter: brightness(0.6);
 }
 
@@ -253,12 +268,6 @@ html {
 /* Renk geçişi için */
 .bg-gradient-primary {
   background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%) !important;
-}
-
-/* Profil fotoğrafı sınırı */
-#hero {
-  margin-top: -56px; /* navbar yüksekliği kadar yukarı kaydır */
-  padding-top: 56px; /* aynı kadar içerik itele */
 }
 
 /* Section başlık alt çizgisi ve kart gölgeleri */
@@ -301,4 +310,52 @@ h2.border-bottom {
 }
 .index-text-bold {
   color: #cccccc;
+}
+
+.footer-dark {
+  background-color: #0d0d0d; /* siyaha yakın koyu gri */
+}
+
+.year-list {
+  list-style: none; /* madde işaretlerini kaldır */
+  padding: 0;
+  margin: 0;
+
+  /* 3 sütun ve aralarındaki boşluğu ayarla */
+  column-count: 3;
+  column-gap: 1rem;
+}
+
+.year-list li {
+  margin-bottom: 0.25rem; /* alt boşluk */
+}
+.custom-icon {
+  width: auto;
+  height: 1.4rem;
+  /* dikey ortalamak için: */
+  vertical-align: -0.125em;
+}
+.takim-bubble {
+  max-height: 30rem;
+  display: flex;
+  align-items: stretch; /* İçerik ve resim aynı yükseklikte olsun */
+  overflow: hidden; /* Taşan kısımları kırp */
+  background-color: rgba(25, 25, 25, 0.5);
+  border-radius: 20px;
+  padding: 1.5rem; /* İç boşluk her tarafta eşit */
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.bubble-content {
+  flex: 1 1 60%; /* %60 genişliğe kadar esneyebilir */
+  max-width: 60%;
+  overflow-y: auto;
+}
+
+.bubble-img {
+  flex: 0 0 40%; /* %40 genişliği korur */
+  max-width: 40%;
+  height: 100%;
+  object-fit: cover;
 }
