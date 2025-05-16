@@ -43,19 +43,34 @@ html {
   background: linear-gradient(to bottom, #2a85be, #69adc1);
 }
 .contactBody {
-  background-color: rgb(189, 236, 206);
+  background: linear-gradient(to top, #99e1bd, #d9f3d5);
 }
 .cvBody {
   background: linear-gradient(to right, #fffae2, #e9eeff);
 }
 .ilgiBody {
-  background-color: rgb(254, 245, 255);
+  /* Temel beyaz arkaplan */
+  background-color: #ffffff;
+
+  /* Solda hafif kırmızı, ortada beyaz, sağda hafif mavi gradyan */
+  background-image: linear-gradient(
+    to right,
+    /* Soldaki kırmızı gradyanın opaklığı ve uzunluğu */
+      rgba(255, 139, 239, 0.3) 0%,
+    rgba(255, 255, 255, 0) 15%,
+
+    /* Ortadaki saf beyaz bölge */ #ffffff 15%,
+    #ffffff 85%,
+
+    /* Sağdaki mavi gradyanın opaklığı ve uzunluğu */ rgba(174, 174, 255, 0) 85%,
+    rgba(0, 0, 255, 0.3) 100%
+  );
 }
 .loginBody {
-  background-color: rgb(255, 254, 231);
+  background: linear-gradient(to top, #fff8e1, #ffffff);
 }
 .mirasBody {
-  /* Temel beyaz arkaplan */
+  /* Temel siyah arkaplan */
   background-color: #0c0c0c;
 
   /* Solda hafif kırmızı, ortada beyaz, sağda hafif mavi gradyan */
@@ -133,6 +148,7 @@ html {
   -webkit-backdrop-filter: blur(10px);
   transition: background-color 0.3s ease;
 }
+
 .loginNavBar {
   background: none !important;
   background-image: linear-gradient(
@@ -162,11 +178,27 @@ html {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .sehirBubble:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
+.ilgiBubble {
+  background: linear-gradient(to bottom right, #28081e, #271145);
+  border-radius: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 15rem;
+}
+.ilgiBubblePembeShadow {
+  box-shadow: 0 20px 30px rgba(125, 34, 116, 0.7);
+}
+.ilgiBubbleMaviShadow {
+  box-shadow: 0 20px 30px rgba(34, 84, 125, 0.7);
+}
+.ilgiBubble:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
 /* Okları büyüt */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
@@ -233,7 +265,9 @@ html {
   margin-left: 10px;
   margin-right: 10px;
 }
-
+.ilgi-hero-bg {
+  background: linear-gradient(to right, #333357, #7c2c76);
+}
 .hero-container {
   position: relative; /* overlay ve absoluteları doğru hizalaması için */
   height: 100vh; /* görsel alanı tam ekran yüksekliği */
@@ -313,9 +347,18 @@ h2.border-bottom {
 }
 
 .footer-dark {
-  background-color: #0d0d0d; /* siyaha yakın koyu gri */
+  background-color: #0d0d0d;
 }
 
+.footer-sehir {
+  background: linear-gradient(to right, #090f13, #1e0c0c);
+}
+.footer-takim {
+  background: linear-gradient(to left, #1d2d4a, #3c1313);
+}
+.footer-ilgi {
+  background: linear-gradient(to left, #2f172e, #171128);
+}
 .year-list {
   list-style: none; /* madde işaretlerini kaldır */
   padding: 0;
@@ -358,4 +401,198 @@ h2.border-bottom {
   max-width: 40%;
   height: 100%;
   object-fit: cover;
+}
+.eplBubbleSmall {
+  background: linear-gradient(to bottom right, #1e2f4a, #314d6e);
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.eplBubbleTable {
+  background: linear-gradient(to bottom right, #223455, #3b5f84);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.eplTableContainer {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  padding: 1rem;
+  padding-bottom: 0.3rem;
+}
+
+.eplTable {
+  font-size: 0.9rem;
+  color: #222;
+}
+
+.eplTable thead {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.eplTable th,
+.eplTable td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.6rem;
+}
+
+.tableHeaderRow th {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.login-wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-container {
+  background-color: #fffde7; /* açık sarı tonlu kutu */
+  padding: 50px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 500px; /* daha geniş kutu */
+  border: 2px solid #fbc02d; /* sarı kenarlık */
+}
+
+.form-label {
+  color: #5d4037; /* sıcak kahverengi ton */
+}
+
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #fdd835;
+}
+
+.btn-warning {
+  border-radius: 10px;
+  font-weight: bold;
+}
+.body-green {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #a8e6cf, #dcedc1);
+  font-family: Arial, sans-serif;
+}
+
+.contact-container {
+  max-width: 70%;
+  margin: 4.3rem auto;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 100, 0, 0.2);
+  backdrop-filter: blur(10px);
+  color: #004d00;
+}
+
+.contact-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #1b5e20;
+}
+
+.form-group {
+  background-color: rgba(76, 175, 80, 0.15);
+  padding: 15px;
+  margin-bottom: 15px;
+  border-left: 6px solid rgba(56, 142, 60, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.form-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #c8e6c9;
+  border-radius: 5px;
+  background-color: #ffffffcc;
+  box-sizing: border-box;
+}
+
+.form-radio-group,
+.form-checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.submit-btn {
+  width: 42%;
+  justify-content: center;
+  display: flex;
+  font-size: 16px;
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+.submit-btn-div {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+.submit-btn:hover {
+  background-color: #2e7d32;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0);
+  transform: translateY(-1px);
+}
+.js-check-btn {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  font-size: 16px;
+  background-color: #625f18;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+.js-check-btn:hover {
+  background-color: #28270a;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0);
+  transform: translateY(-1px);
+}
+.vue-check-btn {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  font-size: 16px;
+  background-color: #2d7e7c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+.vue-check-btn:hover {
+  background-color: #153838;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0);
+  transform: translateY(-1px);
+}
+.check-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 20px;
 }
