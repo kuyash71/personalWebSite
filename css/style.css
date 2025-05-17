@@ -482,7 +482,6 @@ h2.border-bottom {
 }
 
 .contact-container {
-  max-width: 70%;
   margin: 4.3rem auto;
   padding: 30px;
   background-color: rgba(255, 255, 255, 0.2);
@@ -490,6 +489,40 @@ h2.border-bottom {
   box-shadow: 0 0 15px rgba(0, 100, 0, 0.2);
   backdrop-filter: blur(10px);
   color: #004d00;
+}
+
+.contact-container {
+  max-width: 70%;
+}
+
+/* 768px ve üzeri tabletlerde */
+@media (max-width: 768px) {
+  .contact-container {
+    max-width: 90%;
+  }
+  .sehirBubbleColFix > div {
+    /* sadece o iki kolonu seçmek için */
+    margin-left: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    margin-right: 0.5rem !important;
+  }
+  .takim-bubble {
+    flex-direction: column; /* Resim + metin artık üst-alta dizilir      */
+    max-height: none; /* 30 rem sınırı kalksın, baloncuk uzayabilsin */
+  }
+
+  .takim-bubble .bubble-content {
+    flex: 0 0 100%; /* Tam genişlik                               */
+    max-width: 100%;
+    overflow: visible; /* Metin taşmasın                             */
+  }
+
+  .takim-bubble .bubble-img {
+    flex: 0 0 100%; /* Resim de tam genişlik                      */
+    max-width: 100%;
+    height: auto; /* Oranı koru, otomatik yükseklik             */
+    margin-top: 1rem; /* Metinle resim arasında biraz boşluk        */
+  }
 }
 
 .contact-container h2 {
@@ -544,6 +577,10 @@ h2.border-bottom {
   transition: background 0.3s;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
+button:disabled {
+  pointer-events: none;
+  background-color: #0a2308;
+}
 .submit-btn-div {
   width: 100%;
   justify-content: center;
@@ -551,6 +588,29 @@ h2.border-bottom {
 }
 .submit-btn:hover {
   background-color: #2e7d32;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0);
+  transform: translateY(-1px);
+}
+.reset-btn-div {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+.reset-btn {
+  width: 42%;
+  justify-content: center;
+  display: flex;
+  font-size: 16px;
+  background-color: #5a1772;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+.reset-btn:hover {
+  background-color: #3c1649;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0);
   transform: translateY(-1px);
 }
@@ -595,4 +655,19 @@ h2.border-bottom {
   justify-content: center;
   gap: 1rem;
   margin-top: 20px;
+}
+
+.error-message {
+  display: block; /* satır içinde değil, blok seviye */
+  color: #c71400; /* kırmızımsı hata rengi */
+  font-size: 0.875rem; /* biraz küçük metin */
+  margin-top: 0.25rem; /* input ile arasında boşluk */
+}
+
+/* Hata olan grubun çevresini kırmızıya boyamak istersen */
+/* isteğe bağlı, görsel geri bildirim için */
+.has-error .form-input,
+.has-error .form-select,
+.has-error .form-textarea {
+  border-color: #e74c3c;
 }
