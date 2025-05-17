@@ -467,7 +467,7 @@ h2.border-bottom {
 
 .form-control {
   border-radius: 10px;
-  border: 1px solid #fdd835;
+  border: 2px solid #187829;
 }
 
 .btn-warning {
@@ -506,22 +506,17 @@ h2.border-bottom {
     margin-bottom: 0.5rem !important;
     margin-right: 0.5rem !important;
   }
-  .takim-bubble {
-    flex-direction: column; /* Resim + metin artık üst-alta dizilir      */
-    max-height: none; /* 30 rem sınırı kalksın, baloncuk uzayabilsin */
+  .submit-btn {
+    width: 100% !important;
   }
-
-  .takim-bubble .bubble-content {
-    flex: 0 0 100%; /* Tam genişlik                               */
-    max-width: 100%;
-    overflow: visible; /* Metin taşmasın                             */
+  .js-check-btn {
+    width: 40% !important;
   }
-
-  .takim-bubble .bubble-img {
-    flex: 0 0 100%; /* Resim de tam genişlik                      */
-    max-width: 100%;
-    height: auto; /* Oranı koru, otomatik yükseklik             */
-    margin-top: 1rem; /* Metinle resim arasında biraz boşluk        */
+  .vue-check-btn {
+    width: 40% !important;
+  }
+  .reset-btn {
+    width: 100% !important;
   }
 }
 
@@ -565,7 +560,7 @@ h2.border-bottom {
 }
 
 .submit-btn {
-  width: 42%;
+  width: 82%;
   justify-content: center;
   display: flex;
   font-size: 16px;
@@ -597,7 +592,7 @@ button:disabled {
   display: flex;
 }
 .reset-btn {
-  width: 42%;
+  width: 82%;
   justify-content: center;
   display: flex;
   font-size: 16px;
@@ -617,7 +612,7 @@ button:disabled {
 .js-check-btn {
   display: flex;
   justify-content: center;
-  width: 20%;
+  width: 40%;
   font-size: 16px;
   background-color: #625f18;
   color: white;
@@ -635,7 +630,7 @@ button:disabled {
 .vue-check-btn {
   display: flex;
   justify-content: center;
-  width: 20%;
+  width: 40%;
   font-size: 16px;
   background-color: #2d7e7c;
   color: white;
@@ -670,4 +665,65 @@ button:disabled {
 .has-error .form-select,
 .has-error .form-textarea {
   border-color: #e74c3c;
+}
+
+/* 3) switch boyutlarını biraz büyütmek isterseniz */
+.form-check-input {
+  width: 2.2em;
+  height: 1.2em;
+}
+/* Küçük ekranlar için hafif küçültme */
+@media (max-width: 576px) {
+  .form-check-input {
+    width: 1.8em;
+    height: 1em;
+  }
+}
+.form-check-label {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Switch etiketini küçült ve yarı saydam yap */
+#switchLabel {
+  font-size: 0.75rem; /* Yazı boyutu: normalin ~¾’ü */
+  opacity: 0.6; /* %60 opaklık */
+  transition: opacity 0.2s ease-in-out;
+}
+/* 1. Temel flex-wrap + %’lik genişlik ayarı (kesme/çarpma yok) */
+.takim-bubble {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: visible !important;
+  max-height: none !important;
+  align-items: flex-start;
+}
+.takim-bubble .bubble-img,
+.takim-bubble .bubble-content {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+/* 2. Küçük ekran: resim öncelikli, üstte görünsün */
+@media (max-width: 992px) {
+  .takim-bubble .bubble-img {
+    order: 1; /* önce */
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .takim-bubble .bubble-content {
+    order: 2; /* sonra */
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* 3. Büyük ekran: metin solda, resim sağda (default ters sıra) */
+@media (min-width: 993px) {
+  .takim-bubble .bubble-content {
+    order: 1;
+  }
+  .takim-bubble .bubble-img {
+    order: 2;
+  }
 }
