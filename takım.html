@@ -68,7 +68,7 @@
     <div class="hero-container position-relative text-white text-center">
       <!-- Resim -->
       <img
-        src="img/akyazı.jpg"
+        src="img/akyazı.png"
         alt="Şehir"
         class="img-fluid w-100 hero-image"
       />
@@ -84,15 +84,22 @@
 
     <main class="container-fluid content-section py-0">
       <!-- KULÜP BAŞARILARI -->
-      <section id="kupalar" class="text-center px-5 pt-5 pb-0 text-white">
+      <section
+        id="kupalar"
+        class="text-center px-5 pt-5 pb-md-0 pb-sm-4 text-white"
+      >
         <p class="h1 text-shadow mt-3">KULÜP BAŞARILARI</p>
-        <div class="row justify-content-center g-3 pt-4 px-5">
-          <div class="col-4">
+
+        <!-- ✔︎ Responsive grid: 1 → 2 → 3 kolon -->
+        <div
+          class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 justify-content-center pt-4"
+        >
+          <!-- Türkiye Kupası -->
+          <div class="col d-flex flex-column align-items-center">
             <img
               src="img/kupa-turkiyekupa.png"
               alt="Türkiye Kupası"
-              class="img-fluid mx-auto mt-5"
-              style="height: 45%"
+              class="kupa-img img-fluid"
             />
             <p class="h3 pt-2 text-shadow">Türkiye Kupası</p>
             <ul class="year-list h5 pt-3">
@@ -108,12 +115,12 @@
             </ul>
           </div>
 
-          <div class="col-4">
+          <!-- Türkiye Şampiyonluğu -->
+          <div class="col d-flex flex-column align-items-center">
             <img
               src="img/kupa-superlig.png"
               alt="Süper Lig Kupası"
-              class="img-fluid mx-auto"
-              style="height: 60%"
+              class="kupa-img img-fluid"
             />
             <p class="h3 pt-2 text-shadow">Türkiye Şampiyonluğu</p>
             <ul class="year-list h5 pt-3">
@@ -169,12 +176,12 @@
             </ul>
           </div>
 
-          <div class="col-4">
+          <!-- Türkiye Süper Kupası -->
+          <div class="col d-flex flex-column align-items-center">
             <img
               src="img/kupa-superkupa.png"
               alt="Türkiye Süper Kupası"
-              class="img-fluid mx-auto mt-5"
-              style="height: 45%"
+              class="kupa-img img-fluid"
             />
             <p class="h3 pt-2 text-shadow">Türkiye Süper Kupası</p>
             <ul class="year-list h5 pt-3">
@@ -191,6 +198,7 @@
             </ul>
           </div>
         </div>
+        <!-- /.row -->
       </section>
 
       <section class="m-3 p-0 mb-5 takim-bubble" id="sampiyonluk2122">
