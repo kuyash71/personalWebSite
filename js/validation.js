@@ -1,193 +1,314 @@
-// ────────── 1) Manuel Smooth Scroll Fonksiyonu ──────────
-function smoothScrollTo(targetY, duration = 200) {
+/* validation.js – iki faktörlü (JS + Vue) doğrulama                 */
+/* -------------- KÜRESEL DURUM ----------------------------------- */
+let jsValid = false;
+let vueValid = false;
+
+function updateSubmitState() {
+  const btn = document.getElementById("submitBtn");
+  if (btn) btn.disabled = !(jsValid && vueValid);
+}
+
+/* -------------- YUMUŞAK KAYDIRMA -------------------------------- */
+function smoothScrollTo(targetY, duration = 300) {
   const startY = window.pageYOffset;
   const distance = targetY - startY;
   let startTime = null;
-
-  function step(timestamp) {
-    if (startTime === null) startTime = timestamp;
-    const time = timestamp - startTime;
-    // easeInOutQuad
-    const t = Math.min(time / duration, 1);
-    const eased = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-
+  function step(ts) {
+    if (startTime === null) startTime = ts;
+    const p = Math.min((ts - startTime) / duration, 1);
+    const eased = p < 0.5 ? 2 * p * p : -1 + (4 - 2 * p) * p;
     window.scrollTo(0, startY + distance * eased);
-
-    if (time < duration) {
-      window.requestAnimationFrame(step);
-    }
+    if (p < 1) window.requestAnimationFrame(step);
   }
-
   window.requestAnimationFrame(step);
 }
 
-// ────────── 2) DOM Hazır Olduğunda Çalış ──────────
-document.addEventListener("DOMContentLoaded", function () {
-  // Form ve buton referansları
+/* -------------- VUE ↔ JS KÖPRÜ FONKSİYONLARI -------------------- */
+function resetVueErrors() {
+  if (window.vueApp && typeof window.vueApp.resetVue === "function") {
+    window.vueApp.resetVue();
+  }
+}
+window.clearJSErrors = () => {}; // Vue tarafı dolduracak
+
+/* -------------- KLASİK-JS DOĞRULAMA ----------------------------- */
+document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("iletisimID");
   const validateBtn = document.getElementById("js_validationBtn");
-  const submitBtn = document.getElementById("submitBtn");
+  const vueBtn = document.getElementById("vueValidateBtn");
   const resetBtn = document.getElementById("resetBtn");
 
-  // Validasyon yapılacak alanlar ve kuralları
+  /* -- Alan kuralları -- */
   const fields = [
     {
       el: document.getElementById("adsoyad"),
       validate: (v) => v.trim() !== "",
       message: "Ad Soyad boş bırakılamaz.",
     },
+
     {
       el: document.getElementById("email"),
       validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
       message: "Geçerli bir e-posta giriniz.",
     },
+
     {
       el: document.getElementById("telefon"),
       validate: (v) => /^\d{11}$/.test(v.trim()),
-      message:
-        "Telefon numarası boş bırakılmış veya hatalı girilmiş. 11 Hane olacak.",
+      message: "Telefon 11 haneli olmalıdır.",
     },
+
     {
       el: document.getElementById("konu"),
       validate: (v) => v.trim() !== "",
       message: "Konu boş bırakılamaz.",
     },
+
     {
       el: document.getElementById("mesaj"),
       validate: (v) => v.trim() !== "",
       message: "Mesaj alanı boş bırakılamaz.",
     },
+
     {
       el: document.getElementById("mesaj_turu"),
       validate: (v) => v !== "",
       message: "Mesaj türünü seçiniz.",
     },
+
     {
       el: document.getElementById("cevap_group"),
-      validate: (group) =>
-        !!group.querySelector('input[name="cevap_turu"]:checked'),
-      message: "Cevap türünü seçiniz.",
       isGroup: true,
+      validate: (g) => !!g.querySelector('input[name="cevap_turu"]:checked'),
+      message: "Cevap türünü seçiniz.",
     },
+
     {
       el: document.getElementById("githubAdress"),
-      validate: (v) =>
-        v === "" ||
-        /^https?:\/\/(www\.)?github\.com\/[A-Za-z0-9_-]+(\/.*)?$/.test(
-          v.trim()
-        ),
-      message: "Geçerli bir GitHub profili veya depo URL'si giriniz.",
+      validate: (v) => {
+        const t = v.trim();
+        return (
+          t === "" ||
+          /^https:\/\/(www\.)?github\.com\/[A-Za-z0-9_-]+(\/.*)?$/.test(t)
+        );
+      },
+      message: "Geçerli GitHub URL'si giriniz (https://github.com/...).",
     },
+
     {
       el: document.getElementById("beklenentarih"),
       validate: (v) => {
         if (!v) return false;
-        const selected = new Date(v);
-        const today = new Date();
-        // saat/dakika farkını göz ardı etmek için yalnızca tarih kısmı
-        selected.setHours(0, 0, 0, 0);
-        today.setHours(0, 0, 0, 0);
-        return selected > today;
+        const sel = new Date(v);
+        sel.setHours(0, 0, 0, 0);
+        const now = new Date();
+        now.setHours(0, 0, 0, 0);
+        return sel > now;
       },
-      message:
-        "Beklenen tarih bugün veya geçmiş olamaz; lütfen ileri bir tarih seçin.",
+      message: "Tarih bugün veya geçmiş olamaz.",
     },
+
     {
       el: document.getElementById("saat"),
-      validate: (v) => /^([01]\d|2[0-3]):([0-5]\d)$/.test(v),
-      message: "Saat formatı HH:MM (00:00–23:59) şeklinde olmalı.",
+      validate: (v) => /^([01]\d|2[0-3]):[0-5]\d$/.test(v),
+      message: "Saat HH:MM formatında olmalıdır.",
     },
   ];
 
-  // Eskiden kalma hata mesajlarını ve sınıfları temizler
+  /* -- Hata temizleme -- */
   function clearErrors() {
-    form.querySelectorAll(".error-message").forEach((el) => el.remove());
+    form.querySelectorAll(".error-message").forEach((e) => e.remove());
     form
       .querySelectorAll(".has-error")
-      .forEach((el) => el.classList.remove("has-error"));
+      .forEach((e) => e.classList.remove("has-error"));
+  }
+  window.clearJSErrors = clearErrors; // Vue tarafı çağırabilsin
+
+  /* -- Sadece bayrak & mesajları sıfırla (form verisine dokunma) -- */
+  function resetFlags() {
+    jsValid = false;
+    vueValid = false;
+    clearErrors();
+    validateBtn.disabled = false;
+    vueBtn.disabled = false;
+    updateSubmitState();
   }
 
-  // Bir alana hata mesajı ekler, container'ı döner
-  function showError(cfg) {
-    const { el, message } = cfg;
-    const container = el.closest(".form-group");
+  /* -- Formu tamamen sıfırla (Temizle butonu) -- */
+  function resetAll() {
+    form.reset();
+    resetVueErrors();
+    resetFlags();
+  }
 
-    // Eskisi varsa sil
-    const prev = container.querySelector(".error-message");
-    if (prev) prev.remove();
+  /* Olay bağlayıcıları */
+  resetBtn.addEventListener("click", resetAll);
+  form.addEventListener("input", resetFlags);
+  form.addEventListener("change", resetFlags);
 
-    // Yeni mesaj
+  /* -- Hata baloncuğu -- */
+  function showError({ el, message }) {
+    const cont = el.closest(".form-group") || el;
+    cont.classList.add("has-error");
     const span = document.createElement("span");
     span.className = "error-message";
     span.textContent = message;
-    container.appendChild(span);
-    container.classList.add("has-error");
-
-    return container;
+    cont.appendChild(span);
+    return cont;
   }
 
-  resetBtn.addEventListener("click", function () {
-    form.reset();
-    resetAllValidations();
-    clearErrors();
-  });
+  /* -- “JS ile Doğrula” -- */
+  validateBtn.addEventListener("click", () => {
+    resetVueErrors(); // Eski Vue hatalarını sil
+    clearErrors(); // Eski JS hatalarını sil
 
-  // Validation butonuna tıklandığında
-  validateBtn.addEventListener("click", function () {
-    clearErrors();
-    let isValid = true;
-    let firstErrorContainer = null;
-
+    let ok = true,
+      firstErr = null;
     fields.forEach((cfg) => {
-      const ok = cfg.isGroup
+      const valid = cfg.isGroup
         ? cfg.validate(cfg.el)
         : cfg.validate(cfg.el.value);
-
-      if (!ok) {
-        isValid = false;
-        const errCnt = showError(cfg);
-        if (!firstErrorContainer) firstErrorContainer = errCnt;
+      if (!valid) {
+        ok = false;
+        const cnt = showError(cfg);
+        if (!firstErr) firstErr = cnt;
       }
     });
 
-    if (isValid) {
-      submitBtn.disabled = false;
-    } else {
-      submitBtn.disabled = true;
+    jsValid = ok;
+    updateSubmitState();
 
-      // Hatalı alanın dikey pozisyonunu al
-      const rect = firstErrorContainer.getBoundingClientRect();
-      const targetY = rect.top + window.pageYOffset - 175; // 50px üst boşluk
-
-      // Manuel smooth scroll
-      smoothScrollTo(targetY, 1);
-
-      // İsteğe bağlı: focus'u preventScroll ile yap
-      const focusEl = firstErrorContainer.querySelector(
-        "input, select, textarea"
-      );
-      if (focusEl) focusEl.focus({ preventScroll: true });
+    if (!ok && firstErr) {
+      const y = firstErr.getBoundingClientRect().top + window.pageYOffset - 120;
+      smoothScrollTo(y, 300);
+      const f = firstErr.querySelector("input,select,textarea");
+      f && f.focus({ preventScroll: true });
     }
   });
-
-  // ────────── 9) Reset Mantığı ──────────
-  function resetAllValidations() {
-    // Yeniden JS ve Vue bayraklarını false yap
-    jsValid = false;
-    vueValid = false;
-    // Tüm üç butonu enable et / disable et
-    validateBtn.disabled = false;
-    vueValidateBtn.disabled = false;
-    submitBtn.disabled = true;
-    // Sahada gösterilmiş eski hata mesajları varsa temizle
-    clearErrors();
-  }
-
-  // 9.a) Sayfa yüklendiğinde reset et
-  resetAllValidations();
-
-  // 9.b) Formda herhangi bir değişiklik olduğunda reset et
-  //      'input' ve 'change' olayları hem text hem seçim değişimlerini yakalar
-  form.addEventListener("input", resetAllValidations);
-  form.addEventListener("change", resetAllValidations);
 });
+
+/* ───────── VUE DOĞRULAMA ───────── */
+const { createApp, reactive, ref, computed, nextTick } = Vue;
+
+const vueApp = createApp({
+  setup() {
+    /* ---- Reaktif Form ---- */
+    const form = reactive({
+      adsoyad: "",
+      email: "",
+      telefon: "",
+      konu: "",
+      mesaj: "",
+      cevap_turu: "",
+      beklenentarih: "",
+      saat: "",
+      github: "",
+    });
+
+    const tried = ref(false);
+    const canSubmit = ref(false);
+
+    /* ---- Kurallar ---- */
+
+    const githubValid = computed(() => {
+      const url = form.github.trim();
+      return (
+        url === "" ||
+        /^https:\/\/(www\.)?github\.com\/[A-Za-z0-9_-]+(\/.*)?$/.test(url)
+      );
+    });
+
+    const adValid = computed(() => !!form.adsoyad.trim());
+    const emailValid = computed(() =>
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)
+    );
+    const telValid = computed(() => /^\d{11}$/.test(form.telefon));
+    const konuValid = computed(() => !!form.konu.trim());
+    const mesajValid = computed(() => !!form.mesaj.trim());
+    const cevapValid = computed(() => !!form.cevap_turu);
+    const tarihValid = computed(() => {
+      if (!form.beklenentarih) return false;
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const pick = new Date(form.beklenentarih);
+      return pick > today;
+    });
+    const saatValid = computed(() => !!form.saat);
+
+    const allValid = computed(
+      () =>
+        adValid.value &&
+        emailValid.value &&
+        telValid.value &&
+        konuValid.value &&
+        mesajValid.value &&
+        cevapValid.value &&
+        tarihValid.value &&
+        saatValid.value &&
+        githubValid.value
+    );
+
+    /* ---- JS’deki hataları sil ---- */
+    function clearJsSide() {
+      if (typeof window.clearJSErrors === "function") window.clearJSErrors();
+    }
+
+    /* ---- Vue Doğrula ---- */
+    function runValidation() {
+      clearJsSide();
+      tried.value = true;
+      vueValid = allValid.value;
+      canSubmit.value = vueValid;
+      updateSubmitState();
+
+      nextTick(() => {
+        // DOM güncellensin, sınıflar eklensin
+        if (vueValid) return; // her şey tamamsa gerek yok
+
+        const formEl = document.getElementById("iletisimID");
+        const firstBad = formEl.querySelector(".is-invalid");
+        if (!firstBad) return;
+
+        const container = firstBad.closest(".form-group") || firstBad;
+        const y =
+          container.getBoundingClientRect().top + window.pageYOffset - 120; // üstte 120 px boşluk
+        smoothScrollTo(y, 300); // JS fonksiyonunu kullan
+
+        firstBad.focus({ preventScroll: true });
+      });
+    }
+
+    /* ---- Vue Hatalarını sıfırla (JS çağırır) ---- */
+    function resetVue() {
+      tried.value = false;
+      canSubmit.value = false;
+    }
+
+    /* ---- Form Submit ---- */
+    function handleSubmit() {
+      if (jsValid && vueValid && allValid.value) {
+        console.log("Form verileri ⇒", { ...form });
+        alert("Form başarıyla gönderildi 🚀");
+      }
+    }
+
+    return {
+      form,
+      tried,
+      canSubmit,
+      adValid,
+      emailValid,
+      telValid,
+      konuValid,
+      mesajValid,
+      cevapValid,
+      tarihValid,
+      saatValid,
+      githubValid,
+      runValidation,
+      handleSubmit,
+      resetVue,
+    };
+  },
+}).mount("#app");
+window.vueApp = vueApp; // JS tarafının erişebilmesi için
