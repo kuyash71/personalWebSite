@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ad Soyad – Özgeçmiş</title>
+    <title data-i18n="cv_site_baslik">Ad Soyad – Özgeçmiş</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -15,40 +15,84 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body class="bg-light">
+    <!-- DİL DOSYASI -->
+    <script src="lang/lang.js"></script>
+
+    <!-- ÇEVİRİ JS -->
+    <script src="js/translation.js"></script>
+
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark cvNavBar fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark cvNavBar fixed-top">
+      <div class="overlay"></div>
       <div class="container-fluid">
-        <a class="navbar-brand ps-2" href="index.html"
-          ><i class="bi bi-journal-text me-3"></i>CV, Özgeçmişim</a
-        >
+        <a class="navbar-brand ps-2" href="index.html">
+          <i class="bi bi-journal-text me-3"></i>
+          <span data-i18n="cv_navbar_baslik">Ben, adsoyad</span>
+        </a>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="mainNavbar">
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav ms-auto d-flex align-items-center">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Hakkımda</a>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
-            <li class="nav-item">
-              <a class="nav-link" href="sehir.html">Şehrim</a>
+              <a class="nav-link" href="index.html" data-i18n="navbar_hakkimda"
+                >Hakkımda</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="takım.html">Takımım</a>
+              <a class="nav-link" href="cv.html" data-i18n="navbar_cv">CV</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="ilgi.html">İlgi Alanlarım</a>
+              <a class="nav-link" href="sehir.html" data-i18n="navbar_sehrim"
+                >Şehrim</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">İletişim</a>
+              <a class="nav-link" href="takim.html" data-i18n="navbar_takimim"
+                >Takımım</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.html">Giriş</a>
+              <a class="nav-link" href="ilgi.html" data-i18n="navbar_ilgi"
+                >İlgi Alanlarım</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="contact.html"
+                data-i18n="navbar_iletisim"
+                >İletişim</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html" data-i18n="navbar_giris"
+                >Giriş</a
+              >
+            </li>
+            <li class="nav-item ms-3">
+              <div class="form-check form-switch mb-0">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="langSwitch"
+                />
+                <label
+                  class="form-check-label ms-2 text-light"
+                  for="langSwitch"
+                  id="switchLabel"
+                  >TR</label
+                >
+              </div>
             </li>
           </ul>
         </div>
@@ -61,8 +105,10 @@
       class="bg-gradient-primary text-white text-center d-flex flex-column justify-content-center align-items-center hero-container"
     >
       <div class="container mt-5 mt-md-6 mt-lg-7">
-        <h1 class="display-4">adSoyad</h1>
-        <p class="lead">Bilgisayar Mühendisliği 1. Sınıf Öğrencisi</p>
+        <h1 class="display-4" data-i18n="cv_hero_adsoyad">adSoyad</h1>
+        <p class="lead" data-i18n="cv_hero_aciklama">
+          Bilgisayar Mühendisliği 1. Sınıf Öğrencisi
+        </p>
       </div>
     </section>
 
@@ -70,9 +116,10 @@
     <section id="about" class="py-5 bg-white">
       <div class="container">
         <h2 class="h2 mb-4 border-bottom pb-2">
-          <i class="bi bi-person-fill me-3"></i>Hakkımda
+          <i class="bi bi-person-fill me-3"></i
+          ><span data-i18n="cv_hakkimda_baslik">Hakkımda</span>
         </h2>
-        <p>
+        <p data-i18n="cv_hakkimda_text">
           Kısa özgeçmişiniz burada yer alacak. Hangi teknoloji ve
           metodolojilerle çalıştığınızdan, kariyer hedeflerinizden ve sizi
           tanımlayan en güçlü yönlerden bahsedebilirsiniz.
@@ -84,17 +131,22 @@
     <section id="experience" class="py-5 bg-light">
       <div class="container">
         <h2 class="h2 mb-4 border-bottom pb-2">
-          <i class="bi bi-briefcase-fill me-3"></i>Deneyim
+          <i class="bi bi-briefcase-fill me-3"></i
+          ><span data-i18n="cv_deneyim_baslik">Deneyim</span>
         </h2>
         <div class="row g-4">
           <div class="col-12 col-md-6">
             <div class="card h-100 shadow-sm">
               <div class="card-body">
                 <h5 class="card-title">
-                  Şirket Adı – Pozisyon
-                  <span class="text-muted float-end">2022 – Devam</span>
+                  <span data-i18n="cv_deneyim_1">Şirket Adı – Pozisyon</span>
+                  <span
+                    class="text-muted float-end"
+                    data-i18n="cv_deneyim_1_sure"
+                    >2022 – Devam</span
+                  >
                 </h5>
-                <p class="card-text">
+                <p class="card-text" data-i18n="cv_deneyim_1_text">
                   Bu şirkette yaptığınız görevleri, elde ettiğiniz başarıları
                   kısa ve öz anlatın.
                 </p>
@@ -105,10 +157,14 @@
             <div class="card h-100 shadow-sm">
               <div class="card-body">
                 <h5 class="card-title">
-                  Önceki Şirket – Pozisyon
-                  <span class="text-muted float-end">2020 – 2022</span>
+                  <span data-i18n="cv_deneyim_2">Önceki Şirket – Pozisyon</span>
+                  <span
+                    class="text-muted float-end"
+                    data-i18n="cv_deneyim_2_sure"
+                    >2020 – 2022</span
+                  >
                 </h5>
-                <p class="card-text">
+                <p class="card-text" data-i18n="cv_deneyim_2_text">
                   Burada edindiğiniz deneyimler ve öğrendiklerinizden öne
                   çıkanları paylaşın.
                 </p>
@@ -123,16 +179,21 @@
     <section id="education" class="py-5 bg-white">
       <div class="container">
         <h2 class="h2 mb-4 border-bottom pb-2">
-          <i class="bi bi-mortarboard-fill me-3"></i>Eğitim
+          <i class="bi bi-mortarboard-fill me-3"></i
+          ><span data-i18n="cv_egitim_baslik">Eğitim</span>
         </h2>
         <div class="row g-4">
           <div class="col-12 col-md-6">
-            <h5>Sakarya Üniversitesi – Bilgisayar Mühendisliği</h5>
-            <p class="text-muted">2024 – Devam Ediyor</p>
+            <h5 data-i18n="cv_egitim_1">
+              Sakarya Üniversitesi – Bilgisayar Mühendisliği
+            </h5>
+            <p class="text-muted" data-i18n="cv_egitim_1_sure">
+              2024 – Devam Ediyor
+            </p>
           </div>
           <div class="col-12 col-md-6">
-            <h5>Rıfat Dağdelen Anadolu Lisesi</h5>
-            <p class="text-muted">2020 – 2024</p>
+            <h5 data-i18n="cv_egitim_2">Rıfat Dağdelen Anadolu Lisesi</h5>
+            <p class="text-muted" data-i18n="cv_egitim_2_sure">2020 – 2024</p>
           </div>
         </div>
       </div>
@@ -142,31 +203,32 @@
     <section id="skills" class="py-5 bg-light">
       <div class="container">
         <h2 class="h2 mb-4 border-bottom pb-2">
-          <i class="bi bi-lightning-charge-fill me-3"></i>Yetenekler
+          <i class="bi bi-lightning-charge-fill me-3"></i
+          ><span data-i18n="cv_yetenekler_baslik">Yetenekler</span>
         </h2>
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
           <div class="col">
             <div class="p-3 text-center bg-white rounded shadow-sm h-100">
               <i class="bi bi-code-slash fs-1 mb-2"></i>
-              <h6>Python</h6>
+              <h6 data-i18n="cv_yetenekler_py">Python</h6>
             </div>
           </div>
           <div class="col">
             <div class="p-3 text-center bg-white rounded shadow-sm h-100">
               <i class="bi bi-terminal fs-1 mb-2"></i>
-              <h6>Ardupilot</h6>
+              <h6 data-i18n="cv_yetenekler_ardu">Ardupilot</h6>
             </div>
           </div>
           <div class="col">
             <div class="p-3 text-center bg-white rounded shadow-sm h-100">
               <i class="bi bi-robot fs-1 mb-2"></i>
-              <h6>ROS2 & Gazebo</h6>
+              <h6 data-i18n="cv_yetenekler_ros_gazebo">ROS2 & Gazebo</h6>
             </div>
           </div>
           <div class="col">
             <div class="p-3 text-center bg-white rounded shadow-sm h-100">
               <i class="bi bi-boxes fs-1 mb-2"></i>
-              <h6>OOP</h6>
+              <h6 data-i18n="cv_yetenekler_oop">OOP</h6>
             </div>
           </div>
         </div>
@@ -177,7 +239,8 @@
     <section id="contact" class="py-5 bg-white">
       <div class="container">
         <h2 class="h2 mb-4 border-bottom pb-2">
-          <i class="bi bi-telephone-fill me-3"></i>İletişim
+          <i class="bi bi-telephone-fill me-3"></i
+          ><span data-i18n="cv_iletisim">İletişim</span>
         </h2>
         <ul class="list-unstyled">
           <li class="mb-2">
@@ -200,7 +263,12 @@
             <div class="row row-cols-1 row-cols-md-3">
               <div class="col"></div>
               <div class="col text-center">
-                <h6 class="text-uppercase fw-bold mb-3">Site</h6>
+                <h6
+                  class="text-uppercase fw-bold mb-3"
+                  data-i18n="footer_baslik_siteler"
+                >
+                  Site
+                </h6>
               </div>
               <div class="col"></div>
             </div>
@@ -211,13 +279,19 @@
                 <ul class="list-unstyled mb-0">
                   <li class="mb-2">
                     <i class="bi bi-person-fill me-2"></i>
-                    <a href="index.html" class="text-light text-decoration-none"
+                    <a
+                      href="index.html"
+                      class="text-light text-decoration-none"
+                      data-i18n="footer_siteler_hakkimda"
                       >Hakkımda</a
                     >
                   </li>
                   <li class="mb-2">
                     <i class="bi bi-file-earmark-person-fill me-2"></i>
-                    <a href="cv.html" class="text-light text-decoration-none"
+                    <a
+                      href="cv.html"
+                      class="text-light text-decoration-none"
+                      data-i18n="footer_siteler_cv"
                       >CV</a
                     >
                   </li>
@@ -227,13 +301,19 @@
                 <ul class="list-unstyled mb-0">
                   <li class="mb-2">
                     <i class="bi bi-building me-2"></i>
-                    <a href="sehir.html" class="text-light text-decoration-none"
+                    <a
+                      href="sehir.html"
+                      class="text-light text-decoration-none"
+                      data-i18n="footer_siteler_sehrim"
                       >Şehrim</a
                     >
                   </li>
                   <li class="mb-2">
                     <i class="bi bi-people-fill me-2"></i>
-                    <a href="takım.html" class="text-light text-decoration-none"
+                    <a
+                      href="takim.html"
+                      class="text-light text-decoration-none"
+                      data-i18n="footer_siteler_takimim"
                       >Takımım</a
                     >
                   </li>
@@ -243,7 +323,10 @@
                 <ul class="list-unstyled mb-0">
                   <li class="mb-2">
                     <i class="bi bi-heart-fill me-2"></i>
-                    <a href="ilgi.html" class="text-light text-decoration-none"
+                    <a
+                      href="ilgi.html"
+                      class="text-light text-decoration-none"
+                      data-i18n="footer_siteler_ilgi"
                       >İlgi Alanlarım</a
                     >
                   </li>
@@ -252,6 +335,7 @@
                     <a
                       href="contact.html"
                       class="text-light text-decoration-none"
+                      data-i18n="footer_siteler_iletisim"
                       >İletişim</a
                     >
                   </li>
@@ -262,7 +346,9 @@
 
           <!-- 2) SOSYAL — 3 sütunluk alan -->
           <div class="col-12 col-md-3 text-center text-md-end">
-            <h6 class="text-uppercase fw-bold mb-3">Sosyal</h6>
+            <h6 class="text-uppercase fw-bold mb-3" data-i18n="footer_sosyal">
+              Sosyal
+            </h6>
             <div class="d-inline-flex gap-3">
               <a href="#" class="text-light fs-5"
                 ><i class="bi bi-github"></i

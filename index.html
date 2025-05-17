@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ad Soyad - Kişisel Site</title>
+    <title data-i18n="index_site_baslik">Ad Soyad - Kişisel Site</title>
     <!-- Bootstrap Icons -->
     <link
       rel="stylesheet"
@@ -18,42 +18,84 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body class="indexBody">
+    <!-- DİL DOSYASI -->
+    <script src="lang/lang.js"></script>
+
+    <!-- ÇEVİRİ JS -->
+    <script src="js/translation.js"></script>
+
     <!-- NAVBAR BURAYA EKLENİR -->
-    <nav
-      class="navbar navbar-expand-lg navbar-dark bg-dark indexNavBar fixed-top"
-    >
+    <nav class="navbar navbar-expand-lg navbar-dark indexNavBar fixed-top">
+      <div class="overlay"></div>
       <div class="container-fluid">
-        <a class="navbar-brand ps-2" href="index.html"
-          ><i class="bi bi-person-circle me-3"></i>Ben, adsoyad</a
-        >
+        <a class="navbar-brand ps-2" href="index.html">
+          <i class="bi bi-person-circle me-3"></i>
+          <span data-i18n="index_navbar_baslik">Ben, adsoyad</span>
+        </a>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="mainNavbar">
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav ms-auto d-flex align-items-center">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Hakkımda</a>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
-            <li class="nav-item">
-              <a class="nav-link" href="sehir.html">Şehrim</a>
+              <a class="nav-link" href="index.html" data-i18n="navbar_hakkimda"
+                >Hakkımda</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="takım.html">Takımım</a>
+              <a class="nav-link" href="cv.html" data-i18n="navbar_cv">CV</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="ilgi.html">İlgi Alanlarım</a>
+              <a class="nav-link" href="sehir.html" data-i18n="navbar_sehrim"
+                >Şehrim</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">İletişim</a>
+              <a class="nav-link" href="takim.html" data-i18n="navbar_takimim"
+                >Takımım</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.html">Giriş</a>
+              <a class="nav-link" href="ilgi.html" data-i18n="navbar_ilgi"
+                >İlgi Alanlarım</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="contact.html"
+                data-i18n="navbar_iletisim"
+                >İletişim</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html" data-i18n="navbar_giris"
+                >Giriş</a
+              >
+            </li>
+            <li class="nav-item ms-3">
+              <div class="form-check form-switch mb-0">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="langSwitch"
+                />
+                <label
+                  class="form-check-label ms-2 text-light"
+                  for="langSwitch"
+                  id="switchLabel"
+                  >TR</label
+                >
+              </div>
             </li>
           </ul>
         </div>
@@ -79,9 +121,9 @@
         <div class="col-12 col-md-8">
           <h3 class="h3 mb-3 index-title">
             <i class="bi bi-info-circle-fill me-2"></i>
-            Hakkımda
+            <span data-i18n="index_hakkimda_baslik">Hakkımda</span>
           </h3>
-          <p class="index-text">
+          <p class="index-text" data-i18n="index_hakkimda_text">
             Buraya kendinizle ilgili kısa bir tanıtım yazısı ekleyin. Eğitim
             geçmişiniz, kariyer hedefleriniz, ilgi alanlarınız ve sizi sizi
             yapan en önemli özelliklerinizden bahsedebilirsiniz.
@@ -93,9 +135,9 @@
       <section class="mt-4 index-bubble">
         <h3 class="h3 mb-3 index-title">
           <i class="bi bi-briefcase-fill me-2"></i>
-          Kariyer Hedefi
+          <span data-i18n="index_kariyer_baslik">Kariyer Hedefi</span>
         </h3>
-        <p class="index-text">
+        <p class="index-text" data-i18n="index_kariyer_text">
           Burada kariyerinizle ilgili kısa bir hedef veya vizyon ifadesi
           paylaşabilirsiniz.
         </p>
@@ -105,9 +147,9 @@
       <section class="mt-4 index-bubble">
         <h3 class="h3 mb-3 index-title">
           <i class="bi bi-mortarboard-fill me-2"></i>
-          Eğitim
+          <span data-i18n="index_egitim_baslik">Eğitim</span>
         </h3>
-        <p class="index-text">
+        <p class="index-text" data-i18n="index_egitim_text">
           Üniversite, bölüm ve mezuniyet tarihi bilgilerinizi buraya ekleyin.
         </p>
       </section>
@@ -116,9 +158,9 @@
       <section class="mt-4 index-bubble">
         <h3 class="h3 mb-3 index-title">
           <i class="bi bi-lightning-charge-fill me-2"></i>
-          Yetenekler
+          <span data-i18n="index_yetenek_baslik">Yetenekler</span>
         </h3>
-        <p class="index-text">
+        <p class="index-text" data-i18n="index_yetenek_metin">
           Sahip olduğunuz başlıca teknik veya kişisel yetenekleri listeleyin.
         </p>
       </section>
@@ -126,62 +168,78 @@
       <!-- TEMEL BİLGİLER -->
       <section id="personal-info" class="mt-4 index-bubble">
         <h3 class="h3 mb-3 index-title">
-          <i class="bi bi-card-list me-2"></i>
-          Temel Bilgiler
+          <i class="bi bi-card-list me-2"></i
+          ><span data-i18n="index_temelbilgi_baslik">Temel Bilgiler</span>
         </h3>
         <div class="row row-cols-2 row-cols-lg-3 g-3">
           <div class="col">
             <div class="index-info-bubble p-3">
               <strong class="index-text-bold">
                 <i class="bi bi-calendar-event-fill me-1"></i>
-                Doğum Tarihi:
+                <span data-i18n="index_temelbilgi_dogum_baslik"
+                  >Doğum Tarihi:</span
+                >
               </strong>
-              DD.MM.YYYY
+              <span data-i18n="index_temelbilgi_dogum_tarih">DD.MM.YYYY</span>
             </div>
           </div>
           <div class="col">
             <div class="index-info-bubble p-3">
               <strong class="index-text-bold">
                 <i class="bi bi-geo-alt-fill me-1"></i>
-                Lokasyon:
+                <span data-i18n="index_temelbilgi_lokasyon_baslik"
+                  >Lokasyon:</span
+                >
               </strong>
-              Şehir, Ülke
+              <span data-i18n="index_temelbilgi_lokasyon_konum"
+                >Şehir, Ülke</span
+              >
             </div>
           </div>
           <div class="col">
             <div class="index-info-bubble p-3">
               <strong class="index-text-bold">
                 <i class="bi bi-envelope-fill me-1"></i>
-                E-posta:
+                <span data-i18n="index_temelbilgi_mail_baslik">E-posta:</span>
               </strong>
-              email@ornek.com
+              <span data-i18n="index_temelbilgi_mail_posta"
+                >email@ornek.com</span
+              >
             </div>
           </div>
           <div class="col">
             <div class="index-info-bubble p-3">
               <strong class="index-text-bold">
                 <i class="bi bi-telephone-fill me-1"></i>
-                Telefon:
+                <span data-i18n="index_temelbilgi_telefon_baslik"
+                  >Telefon:</span
+                >
               </strong>
-              +90 5XX XXX XX XX
+              <span data-i18n="index_temelbilgi_telefon_no"
+                >+90 5XX XXX XX XX</span
+              >
             </div>
           </div>
           <div class="col">
             <div class="index-info-bubble p-3">
               <strong class="index-text-bold">
                 <i class="bi bi-globe2 me-1"></i>
-                Web Sitesi:
+                <span data-i18n="index_temelbilgi_site_baslik"
+                  >Web Sitesi:</span
+                >
               </strong>
-              www.ornek.com
+              <span data-i18n="index_temelbilgi_site_url">www.ornek.com</span>
             </div>
           </div>
           <div class="col">
             <div class="index-info-bubble p-3">
               <strong class="index-text-bold">
                 <i class="bi bi-translate me-1"></i>
-                Diller:
+                <span data-i18n="index_temelbilgi_dil_baslik">Diller:</span>
               </strong>
-              Türkçe (AN), İngilizce (İY)
+              <span data-i18n="index_temelbilgi_dil_bilgi"
+                >Türkçe (AN), İngilizce (İY)</span
+              >
             </div>
           </div>
         </div>
@@ -197,7 +255,12 @@
             <div class="row row-cols-1 row-cols-md-3">
               <div class="col"></div>
               <div class="col text-center">
-                <h6 class="text-uppercase fw-bold mb-3">Site</h6>
+                <h6
+                  class="text-uppercase fw-bold mb-3"
+                  data-i18n="footer_baslik_siteler"
+                >
+                  Site
+                </h6>
               </div>
               <div class="col"></div>
             </div>
@@ -208,13 +271,19 @@
                 <ul class="list-unstyled mb-0">
                   <li class="mb-2">
                     <i class="bi bi-person-fill me-2"></i>
-                    <a href="index.html" class="text-light text-decoration-none"
+                    <a
+                      href="index.html"
+                      class="text-light text-decoration-none"
+                      data-i18n="footer_siteler_hakkimda"
                       >Hakkımda</a
                     >
                   </li>
                   <li class="mb-2">
                     <i class="bi bi-file-earmark-person-fill me-2"></i>
-                    <a href="cv.html" class="text-light text-decoration-none"
+                    <a
+                      href="cv.html"
+                      class="text-light text-decoration-none"
+                      data-i18n="footer_siteler_cv"
                       >CV</a
                     >
                   </li>
@@ -224,13 +293,19 @@
                 <ul class="list-unstyled mb-0">
                   <li class="mb-2">
                     <i class="bi bi-building me-2"></i>
-                    <a href="sehir.html" class="text-light text-decoration-none"
+                    <a
+                      href="sehir.html"
+                      class="text-light text-decoration-none"
+                      data-i18n="footer_siteler_sehrim"
                       >Şehrim</a
                     >
                   </li>
                   <li class="mb-2">
                     <i class="bi bi-people-fill me-2"></i>
-                    <a href="takım.html" class="text-light text-decoration-none"
+                    <a
+                      href="takim.html"
+                      class="text-light text-decoration-none"
+                      data-i18n="footer_siteler_takimim"
                       >Takımım</a
                     >
                   </li>
@@ -240,7 +315,10 @@
                 <ul class="list-unstyled mb-0">
                   <li class="mb-2">
                     <i class="bi bi-heart-fill me-2"></i>
-                    <a href="ilgi.html" class="text-light text-decoration-none"
+                    <a
+                      href="ilgi.html"
+                      class="text-light text-decoration-none"
+                      data-i18n="footer_siteler_ilgi"
                       >İlgi Alanlarım</a
                     >
                   </li>
@@ -249,6 +327,7 @@
                     <a
                       href="contact.html"
                       class="text-light text-decoration-none"
+                      data-i18n="footer_siteler_iletisim"
                       >İletişim</a
                     >
                   </li>
@@ -259,7 +338,9 @@
 
           <!-- 2) SOSYAL — 3 sütunluk alan -->
           <div class="col-12 col-md-3 text-center text-md-end">
-            <h6 class="text-uppercase fw-bold mb-3">Sosyal</h6>
+            <h6 class="text-uppercase fw-bold mb-3" data-i18n="footer_sosyal">
+              Sosyal
+            </h6>
             <div class="d-inline-flex gap-3">
               <a href="#" class="text-light fs-5"
                 ><i class="bi bi-github"></i
@@ -280,7 +361,9 @@
         <hr class="border-light opacity-25 my-4" />
 
         <div class="text-center">
-          <small>&copy; 2025 Ad Soyad. Tüm hakları saklıdır.</small>
+          <small data-i18n=""
+            >&copy; 2025 Ad Soyad. Tüm hakları saklıdır.</small
+          >
         </div>
       </div>
     </footer>

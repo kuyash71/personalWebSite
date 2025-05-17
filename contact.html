@@ -2,256 +2,426 @@
 <html lang="tr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ad Soyad - Kişisel Site</title>
-    <!-- Bootstrap Icons -->
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title data-i18n="contact_site_baslik">Ad Soyad – Kişisel Site</title>
+
+    <!-- Bootstrap -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
     />
-    <!-- Bootstrap CSS -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
       rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
     />
-    <!-- Harici CSS -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
+
   <body class="contactBody">
-    <!-- ✅ NAVBAR BURAYA EKLENİR -->
-    <nav
-      class="navbar navbar-expand-lg navbar-dark bg-dark contactNavBar fixed-top"
-    >
+    <!-- DİL DOSYASI -->
+    <script src="lang/lang.js"></script>
+
+    <!-- ÇEVİRİ JS -->
+    <script src="js/translation.js"></script>
+
+    <!-- ▸ NAVBAR ----------------------------------------------------------->
+    <nav class="navbar navbar-expand-lg navbar-dark contactNavBar fixed-top">
       <div class="overlay"></div>
       <div class="container-fluid">
-        <a class="navbar-brand ps-2" href="index.html"
-          ><i class="bi bi-telephone-fill me-3 fs-5"></i>İletişim</a
-        >
+        <a class="navbar-brand ps-2" href="index.html">
+          <i class="bi bi-telephone-fill me-3 fs-5"></i>
+          <span data-i18n="contact_navbar_baslik">Ben, adsoyad</span>
+        </a>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="mainNavbar">
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav ms-auto d-flex align-items-center">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Hakkımda</a>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
-            <li class="nav-item">
-              <a class="nav-link" href="sehir.html">Şehrim</a>
+              <a class="nav-link" href="index.html" data-i18n="navbar_hakkimda"
+                >Hakkımda</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="takım.html">Takımım</a>
+              <a class="nav-link" href="cv.html" data-i18n="navbar_cv">CV</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="ilgi.html">İlgi Alanlarım</a>
+              <a class="nav-link" href="sehir.html" data-i18n="navbar_sehrim"
+                >Şehrim</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">İletişim</a>
+              <a class="nav-link" href="takim.html" data-i18n="navbar_takimim"
+                >Takımım</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.html">Giriş</a>
+              <a class="nav-link" href="ilgi.html" data-i18n="navbar_ilgi"
+                >İlgi Alanlarım</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="contact.html"
+                data-i18n="navbar_iletisim"
+                >İletişim</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html" data-i18n="navbar_giris"
+                >Giriş</a
+              >
+            </li>
+            <li class="nav-item ms-3">
+              <div class="form-check form-switch mb-0">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="langSwitch"
+                />
+                <label
+                  class="form-check-label ms-2 text-light"
+                  for="langSwitch"
+                  id="switchLabel"
+                  >TR</label
+                >
+              </div>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <main class="contact-container">
-      <!--BAŞLIK-->
-      <h2>İletişim Formu</h2>
-      <!--FORM-->
-      <div id="app">
-      <form
-        action="mesaj_kaydet.php"
-        method="POST"
-        enctype="multipart/form-data"
-        id="iletisimID"
-      >
-        <!--ADSOYAD BLOĞU-->
-        <div class="form-group">
-          <label class="form-label"
-            ><i class="bi bi-person-fill me-2 text-black"></i>Ad Soyad</label
-          >
-          <input type="text" name="adsoyad" id="adsoyad" class="form-input" />
-        </div>
-        <!--MAIL BLOĞU-->
-        <div class="form-group">
-          <label class="form-label"
-            ><i class="bi bi-envelope me-2 text-black"></i>E-Posta</label
-          >
-          <input type="email" name="email" id="email" class="form-input" />
-        </div>
-        <!--TELEFON BLOĞU-->
-        <div class="form-group">
-          <label class="form-label"
-            ><i class="bi bi-telephone-fill me-2 text-black"></i>Telefon</label
-          >
-          <input type="tel" name="telefon" id="telefon" class="form-input" />
-        </div>
 
-        <!--KONU BLOĞU-->
-        <div class="form-group">
-          <label class="form-label"
-            ><i class="bi bi-question-circle-fill me-2 text-black"></i
-            >Konu</label
-          >
-          <input type="text" name="konu" id="konu" class="form-input" />
-        </div>
+    <!-- ▸ FORM ----------------------------------------------------------->
+    <main class="contact-container pt-5 mt-4">
+      <h2 class="text-center mb-3" data-i18n="form_baslik">İletişim Formu</h2>
 
-        <!--MESAJ BLOĞU-->
-        <div class="form-group">
-          <label class="form-label"
-            ><i class="bi bi-card-text me-2 text-black"></i>Mesaj</label
-          >
-          <textarea
-            name="mesaj"
-            rows="4"
-            id="mesaj"
-            class="form-textarea"
-          ></textarea>
-        </div>
-        <!--MESAJ TÜRÜ BLOĞU-->
-        <div class="form-group">
-          <label class="form-label"
-            ><i class="bi bi-braces me-2 text-black"></i>Mesaj Türü</label
-          >
-          <select name="mesaj_turu" id="mesaj_turu" class="form-select">
-            <option>Genel</option>
-            <option>Teknik</option>
-            <option>Öneri</option>
-            <option>Şikayet</option>
-          </select>
-        </div>
-        <!--ETİKETLER BLOĞU-->
-        <div class="form-group">
-          <label class="form-label"
-            ><i class="bi bi-sticky-fill me-2 text-black"></i>Etiketler</label
-          >
-          <div class="form-checkbox-group">
-            <label
-              ><input type="checkbox" name="etiketler[]" value="yazilim" />
-              Yazılım</label
-            >
-            <label
-              ><input type="checkbox" name="etiketler[]" value="proje" />
-              Proje</label
-            >
-            <label
-              ><input type="checkbox" name="etiketler[]" value="kisisel" />
-              Kişisel</label
-            >
-            <label
-              ><input type="checkbox" name="etiketler[]" value="diger" />
-              Diğer</label
-            >
+      <div id="app" class="container">
+        <form
+          id="iletisimID"
+          action="mesaj_kaydet.php"
+          method="POST"
+          enctype="multipart/form-data"
+          @submit.prevent="handleSubmit"
+          novalidate
+        >
+          <!-- Ad Soyad -->
+          <div class="form-group mb-3">
+            <label class="form-label">
+              <i class="bi bi-person-fill me-2"></i>
+              <span data-i18n="form_adsoyad">Ad Soyad</span>
+            </label>
+            <input
+              id="adsoyad"
+              name="adsoyad"
+              type="text"
+              class="form-control"
+              v-model="form.adsoyad"
+              :class="{'is-invalid': tried && !adValid}"
+            />
+            <div class="invalid-feedback" data-i18n="form_adsoyad_err">
+              Lütfen ad – soyad girin.
+            </div>
           </div>
-        </div>
-        <!--DOSYA BLOĞU-->
-        <div class="form-group">
-          <label class="form-label"
-            ><i class="bi bi-file-earmark-fill me-2 text-black"></i>Dosya
-            (.zip)</label
-          >
-          <input type="file" name="dosya" id="dosya" class="form-input" />
-        </div>
-        <!--CEVAP TÜRÜ BLOĞU-->
-        <div class="form-group">
-          <label class="form-label"
-            ><i class="bi bi-reply-fill me-2 text-black"></i>Cevap Türü</label
-          >
-          <div class="form-radio-group" id="cevap_group">
-            <label
-              ><input type="radio" name="cevap_turu" value="cevap_telefon" /><i
-                class="bi bi-telephone-inbound-fill mx-2 text-black"
-              ></i
-              >Telefonla Arayın</label
-            >
-            <label
-              ><input type="radio" name="cevap_turu" value="cevap_mail" /><i
-                class="bi bi-envelope-paper-fill mx-2 text-black"
-              ></i
-              >Mail Atın</label
-            >
+
+          <!-- E-posta -->
+          <div class="form-group mb-3">
+            <label class="form-label">
+              <i class="bi bi-envelope me-2"></i>
+              <span data-i18n="form_mail">E-Posta</span>
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              class="form-control"
+              v-model.trim="form.email"
+              :class="{'is-invalid': tried && !emailValid}"
+            />
+            <div class="invalid-feedback" data-i18n="form_mail_err">
+              Geçerli bir e-posta girin.
+            </div>
           </div>
-        </div>
-        <!--GITHUB ADRESI BLOĞU-->
-        <div class="form-group">
-          <label class="form-label"
-            ><i class="bi bi-github me-2 text-black"></i>Github Adresi</label
-          >
-          <input
-            type="url"
-            name="githubAdress"
-            id="githubAdress"
-            class="form-input"
-          />
-        </div>
-        <!--ACİLİYET BLOĞU-->
-        <div class="form-group">
-          <label class="form-label"
-            ><i class="bi bi-exclamation-circle-fill me-2 text-black"></i
-            >Aciliyet</label
-          >
-          <input
-            type="range"
-            name="aciliyet"
-            min="1"
-            max="10"
-            class="form-input"
-          />
-        </div>
-        <!--BEKLENEN CEVAP AŞIM TARİHİ BLOĞU-->
-        <div class="form-group">
-          <label class="form-label"
-            ><i class="bi bi-calendar-fill me-2 text-black"></i>Beklenen Cevap
-            Aşım Tarihi</label
-          >
-          <input
-            type="date"
-            name="beklenentarih"
-            id="beklenentarih"
-            class="form-input"
-          />
-        </div>
-        <!--MESAJ SAATİ BLOĞU-->
-        <div class="form-group">
-          <label class="form-label"
-            ><i class="bi bi-clock-fill me-2 text-black"></i>Mesaj Saati</label
-          >
-          <input type="time" name="saat" id="saat" class="form-input" />
-        </div>
+
+          <!-- Telefon -->
+          <div class="form-group mb-3">
+            <label class="form-label">
+              <i class="bi bi-telephone-fill me-2"></i
+              ><span data-i18n="form_telefon">Telefon</span>
+            </label>
+            <input
+              id="telefon"
+              name="telefon"
+              type="tel"
+              class="form-control"
+              v-model.trim="form.telefon"
+              :class="{'is-invalid': tried && !telValid}"
+            />
+            <div class="invalid-feedback" data-i18n="form_telefon_err">
+              11 haneli telefon no girin.
+            </div>
+          </div>
+
+          <!-- Konu -->
+          <div class="form-group mb-3">
+            <label class="form-label">
+              <i class="bi bi-question-circle-fill me-2"></i
+              ><span data-i18n="form_konu">Konu</span>
+            </label>
+            <input
+              id="konu"
+              name="konu"
+              type="text"
+              class="form-control"
+              v-model.trim="form.konu"
+              :class="{'is-invalid': tried && !konuValid}"
+            />
+            <div class="invalid-feedback" data-i18n="form_konu_err">
+              Konu boş olamaz.
+            </div>
+          </div>
+
+          <!-- Mesaj -->
+          <div class="form-group mb-3">
+            <label class="form-label">
+              <i class="bi bi-card-text me-2"></i
+              ><span data-i18n="form_text">Mesaj</span>
+            </label>
+            <textarea
+              id="mesaj"
+              name="mesaj"
+              rows="4"
+              class="form-control"
+              v-model.trim="form.mesaj"
+              :class="{'is-invalid': tried && !mesajValid}"
+            ></textarea>
+            <div class="invalid-feedback" data-i18n="form_text_err">
+              Mesaj boş olamaz.
+            </div>
+          </div>
+
+          <!-- Mesaj Türü -->
+          <div class="form-group mb-3">
+            <label class="form-label">
+              <i class="bi bi-braces me-2"></i
+              ><span data-i18n="form_text_tip">Mesaj Türü</span>
+            </label>
+            <select id="mesaj_turu" name="mesaj_turu" class="form-select">
+              <option selected data-i18n="form_text_tip_genel">Genel</option>
+              <option data-i18n="form_text_tip_teknik">Teknik</option>
+              <option data-i18n="form_text_tip_oneri">Öneri</option>
+              <option data-i18n="form_text_tip_sikayet">Şikayet</option>
+            </select>
+          </div>
+
+          <!-- ▸ Etiketler (checkbox) -------------------------------------->
+          <div class="form-group mb-3">
+            <label class="form-label">
+              <i class="bi bi-sticky-fill me-2"></i
+              ><span data-i18n="form_etiketler">Etiketler</span>
+            </label>
+            <div class="form-checkbox-group">
+              <label class="me-3"
+                ><input type="checkbox" name="etiketler[]" value="yazilim" />
+                <span data-i18n="form_etiketler_code">Yazılım</span></label
+              >
+              <label class="me-3"
+                ><input type="checkbox" name="etiketler[]" value="proje" />
+                <span data-i18n="form_etiketler_proj">Proje</span></label
+              >
+              <label class="me-3"
+                ><input type="checkbox" name="etiketler[]" value="kisisel" />
+                <span data-i18n="form_etiketler_kisisel">Kişisel</span></label
+              >
+              <label
+                ><input type="checkbox" name="etiketler[]" value="diger" />
+                <span data-i18n="form_etiketler_diger">Diğer</span></label
+              >
+            </div>
+          </div>
+
+          <!-- ▸ Dosya (.zip) --------------------------------------------->
+          <div class="form-group mb-3">
+            <label for="dosya" class="form-label">
+              <i class="bi bi-file-earmark-fill me-2"></i>
+              <span data-i18n="form_dosya">Dosya (.zip)</span>
+            </label>
+
+            <input
+              id="dosya"
+              name="dosya"
+              type="file"
+              class="form-control"
+              accept=".zip,application/zip"
+            />
+          </div>
+
+          <!-- Cevap Türü -->
+          <div class="form-group mb-3" id="cevap_group">
+            <label class="form-label">
+              <i class="bi bi-reply-fill me-2"></i
+              ><span data-i18n="form_cevap_tip">Cevap Türü</span>
+            </label>
+            <div class="form-radio-group">
+              <label class="me-3 form-label">
+                <input
+                  type="radio"
+                  name="cevap_turu"
+                  value="telefon"
+                  v-model="form.cevap_turu"
+                />
+                <i class="bi bi-telephone-inbound-fill mx-2"></i>
+                <span data-i18n="form_cevap_tip_telefon">Telefon</span>
+              </label>
+              <label class="form-label">
+                <input
+                  type="radio"
+                  name="cevap_turu"
+                  value="mail"
+                  v-model="form.cevap_turu"
+                />
+                <i class="bi bi-envelope-paper-fill mx-2"></i
+                ><span data-i18n="form_cevap_tip_mail">Mail</span>
+              </label>
+            </div>
+            <div class="invalid-feedback" v-if="tried && !cevapValid">
+              <span data-i18n="form_cevap_tip_err"
+                >Lütfen bir cevap türü seçin.</span
+              >
+            </div>
+          </div>
+
+          <!-- GitHub Adresi -->
+          <div class="form-group mb-3">
+            <label class="form-label">
+              <i class="bi bi-github me-2"></i
+              ><span data-i18n="form_github">GitHub Adresi</span>
+            </label>
+            <input
+              id="githubAdress"
+              name="githubAdress"
+              type="url"
+              class="form-control"
+              v-model.trim="form.github"
+              :class="{'is-invalid': tried && !githubValid}"
+            />
+            <div class="invalid-feedback">
+              <span data-i18n="form_github_err"
+                >https://github.com/... biçiminde girin.</span
+              >
+            </div>
+          </div>
+
+          <!-- ▸ Aciliyet (range) ---------------------------------------->
+          <div class="form-group mb-3">
+            <label class="form-label">
+              <i class="bi bi-exclamation-circle-fill me-2"></i
+              ><span data-i18n="form_aciliyet">Aciliyet</span>
+            </label>
+            <input
+              name="aciliyet"
+              type="range"
+              min="1"
+              max="10"
+              class="form-range"
+            />
+          </div>
+
+          <!-- Beklenen Tarih -->
+          <div class="form-group mb-3">
+            <label class="form-label">
+              <i class="bi bi-calendar-fill me-2"></i
+              ><span data-i18n="form_beklenen_cvp_tarihi"
+                >Beklenen Cevap Tarihi</span
+              >
+            </label>
+            <input
+              id="beklenentarih"
+              name="beklenentarih"
+              type="date"
+              class="form-control"
+              v-model="form.beklenentarih"
+              :class="{'is-invalid': tried && !tarihValid}"
+            />
+            <div
+              class="invalid-feedback"
+              data-i18n="form_beklenen_cvp_tarihi_err"
+            >
+              Bugünden ileri bir tarih seçin.
+            </div>
+          </div>
+
+          <!-- Mesaj Saati -->
+          <div class="form-group mb-3">
+            <label class="form-label">
+              <i class="bi bi-clock-fill me-2"></i
+              ><span data-i18n="form_msg_saat">Mesaj Saati</span>
+            </label>
+            <input
+              id="saat"
+              name="saat"
+              type="time"
+              class="form-control"
+              v-model="form.saat"
+              :class="{'is-invalid': tried && !saatValid}"
+            />
+            <div class="invalid-feedback" data-i18n="form_msg_saat_err">
+              Saat seçimi zorunludur.
+            </div>
+          </div>
+
+          <!-- ▸ KONTROL / SUBMIT DÜĞMELERİ ----------------------------->
+          <div class="check-buttons">
+            <button
+              id="js_validationBtn"
+              type="button"
+              class="js-check-btn p-2"
+            >
+              <span data-i18n="form_buton_dogrula_js">JS ile Doğrula</span>
+            </button>
+            <button
+              id="vueValidateBtn"
+              type="button"
+              class="vue-check-btn p-2"
+              @click="runValidation"
+            >
+              <span data-i18n="form_buton_dogrula_vue">Vue ile Doğrula</span>
+            </button>
+          </div>
+          <div class="submit-btn-div">
+            <button
+              id="submitBtn"
+              type="submit"
+              class="submit-btn p-3 my-2 mx-5"
+              disabled
+            >
+              <span data-i18n="form_buton_send">Gönder</span>
+            </button>
+          </div>
+
+          <div class="reset-btn-div">
+            <button id="resetBtn" type="button" class="reset-btn p-3 my-0 mx-5">
+              <span data-i18n="form_buton_temizle">Temizle</span>
+            </button>
+          </div>
+        </form>
       </div>
-        <!--BUTONLAR-->
-        <div class="check-buttons">
-          <!--VUE İLE DOĞRULAMA-->
-          <button type="button" class="js-check-btn p-2" id="js_validationBtn"">JS ile Doğrula</button>
-          <!--VUE İLE DOĞRULAMA-->
-          <button type="button" class="vue-check-btn p-2" id="vueValidateBtn">
-            Vue ile Doğrula
-          </button>
-        </div>
-
-        <!--GÖNDER BUTON-->
-        <div class="submit-btn-div">
-          <button type="submit" id="submitBtn" class="submit-btn p-3 my-2 mx-5" disabled>
-            Gönder
-          </button>
-        </div>
-
-        <div class="reset-btn-div">
-          <button type="button" id="resetBtn" class="reset-btn p-3 my-0 mx-5">
-            Sayfayı Temizle
-          </button>
-        </div>
-      </form>
     </main>
 
+    <!-- ▸ Validation dosyaları -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script src="js/validation.js"></script>
-    <!-- Bootstrap JS -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
