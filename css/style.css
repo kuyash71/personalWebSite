@@ -66,6 +66,27 @@ html {
     rgba(0, 0, 255, 0.3) 100%
   );
 }
+
+.panelBody {
+  color: white;
+  /* Temel beyaz arkaplan */
+  background-color: #111111;
+
+  /* Solda hafif kırmızı, ortada beyaz, sağda hafif mavi gradyan */
+  background-image: linear-gradient(
+    to right,
+    /* Soldaki kırmızı gradyanın opaklığı ve uzunluğu */
+      rgba(255, 139, 239, 0.3) 0%,
+    rgba(74, 28, 190, 0) 10%,
+
+    /* Ortadaki saf beyaz bölge */ #111111 10%,
+    #111111 90%,
+
+    /* Sağdaki mavi gradyanın opaklığı ve uzunluğu */ rgba(174, 174, 255, 0) 90%,
+    rgba(0, 255, 94, 0.3) 100%
+  );
+}
+
 .loginBody {
   background: linear-gradient(to top, #fff8e1, #ffffff);
 }
@@ -143,6 +164,18 @@ html {
     to right,
     rgba(14, 14, 14, 0.6),
     rgba(61, 61, 61, 0.6)
+  ) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease;
+}
+
+.panelNavBar {
+  background: none !important;
+  background-image: linear-gradient(
+    to right,
+    rgba(38, 69, 86, 0.6),
+    rgba(31, 74, 31, 0.6)
   ) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -726,4 +759,44 @@ button:disabled {
   .takim-bubble .bubble-img {
     order: 2;
   }
+}
+
+.accordion-body th {
+  width: 10rem;
+  background: linear-gradient(to right, #fce1ffc8, #ffffffc8);
+}
+.accordion-body td {
+  background: linear-gradient(to right, #ffffffc8, #e1ffe5c8);
+}
+.accordion-body {
+  background: linear-gradient(to bottom, #3a3a3a, #2a2a2a);
+}
+
+.table {
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 0px solid;
+}
+
+.accordion-item {
+  border-radius: 2rem !important;
+  overflow: hidden; /* köşe dışına taşmaları kesmek için */
+  border: 1px solid #ddd; /* istersen kenar çizgisi de ekleyebilirsin */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.accordion-button:not(.collapsed) {
+  background: linear-gradient(
+    to left,
+    rgba(231, 139, 219, 0.9),
+    rgba(134, 224, 144, 0.9)
+  );
+  color: #212529 !important; /* Açıldığında yazı rengi */
+  box-shadow: none !important; /* Varsayılan mavi çerçeveyi kaldırır */
+}
+
+.accordion-button.collapsed {
+  background-color: #eeeeee !important;
+  color: #000 !important;
+  box-shadow: none !important;
 }
