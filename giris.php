@@ -2,52 +2,48 @@
 session_start();
 require_once __DIR__ . '/include/config.php';
 
-// Form POST edilmemişse giriş sayfasına geri dön
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: login.html');
     exit;
 }
 
-// Form verilerini al + basit doğrulama
-$email         = trim($_POST['email']    ?? '');
-$passwordInput =       $_POST['sifre']?? '';
+$giris         = trim($_POST['email'] ?? '');
+$passwordInput = $_POST['sifre']     ?? '';
 
-if ($email === '' || $passwordInput === '') {
-    echo '<h2 style="color:red;">E-posta ve şifre alanları boş bırakılamaz.</h2>';
+if ($giris === '' || $passwordInput === '') {
+    echo '<h2 style="color:red;">E-posta / kullanıcı adı ve şifre boş bırakılamaz.</h2>';
     exit;
 }
 
-/**
- * Hazır sorgu (prepared statement) – mysqlnd gerekmez
- * Sütun adlarını kendi tablonuza göre güncelleyin (ör. -> sifre/email)
- */
 $stmt = $conn->prepare(
-    'SELECT id, sifre    /* şifre hash’i */ 
-     FROM users          /* tablo adı    */
-     WHERE email = ? 
+    'SELECT id, email, kullaniciadi, sifre 
+     FROM users 
+     WHERE email = ? OR kullaniciadi = ?
      LIMIT 1'
 );
-$stmt->bind_param('s', $email);
+$stmt->bind_param('ss', $giris, $giris);
 $stmt->execute();
 $stmt->store_result();
 
 if ($stmt->num_rows === 1) {
-    $stmt->bind_result($userId, $passwordHash);
+    $stmt->bind_result($userId, $userEmail, $username, $passwordHash);
     $stmt->fetch();
 
-    // Şifre doğrulama
     if (password_verify($passwordInput, $passwordHash)) {
-        // Başarılı → oturum değişkenleri
         $_SESSION['user_id']    = $userId;
-        $_SESSION['user_email'] = $email;
+        $_SESSION['user_email'] = $userEmail;
+        $_SESSION['username']   = $username;
 
-        header('Location: mesaj_panel.php');
+        // login.html sayfasına yönlendirme + hoş geldin mesajı için GET parametresi
+        header("Location: login.html?welcome=" . urlencode($username));
         exit;
     } else {
-        echo '<h2 style="color:red;">Hatalı şifre girdiniz.</h2>';
+        header("Location: login.html?error=wrongpass");
+        exit;
     }
 } else {
-    echo '<h2 style="color:red;">Bu e-posta adresiyle kullanıcı bulunamadı.</h2>';
+    header("Location: login.html?error=notfound");
+    exit;
 }
 
 $stmt->close();
