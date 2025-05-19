@@ -1,1 +1,5 @@
+____ VERİTABANI HAKKINDA ÖNEMLİ UYARI ___________________________________________
 
+Hosting hizmeti almış olduğum natro.com üzerinde veritabanımı phpMyAdmin üzerinde kontrol ediyorum ve dosyalara tam erişimim yok.
+Onun yerine temsili bir "database" klasörü oluşturdum ve bunun içine veritabanını sql formatında yükledim.
+Projeyi kullanırken kendi siteninizin veritabanına bu dosyayı yükleyebilir ve kullanabilirsiniz.
