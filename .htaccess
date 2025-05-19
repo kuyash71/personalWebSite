@@ -1,0 +1,40 @@
+# ---------------------------------------------------------------
+#  AVIF / WebP sunucu-tarafı fallback  |  +  Firefox<93 istisnası
+# ---------------------------------------------------------------
+
+# MIME tipleri
+AddType image/avif .avif
+AddType image/webp .webp
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+
+# --- (1)  Firefox 92 ve altı için AVIF'i PAS GEÇ ---------------
+#  UA örnekleri:  Firefox/88.0  |  Firefox/92.0
+#  Ayrıca kurum politikasıyla AVIF kapalı olup Accept: image/avif
+#  gönderen eski ESU sürümlerini de yakalar.
+# ---------------------------------------------------------------
+RewriteCond %{HTTP_USER_AGENT} "Firefox\/([1-8][0-9]|9[0-2])" [OR]
+RewriteCond %{HTTP:Sec-CH-UA} "\"Firefox\";v=\"([1-8][0-9]|9[0-2])"
+RewriteRule ^ - [E=skip_avif:1]
+
+
+# --- (2)  AVIF kuralı (skip_avif env değişkeni yoksa çalışır) ---
+RewriteCond %{ENV:skip_avif} !1
+RewriteCond %{HTTP_ACCEPT} image/avif [NC]
+RewriteCond %{REQUEST_FILENAME}.avif -f
+RewriteRule (?i)^(.+)\.png$ $1.png.avif [T=image/avif,E=img:1,L]
+
+
+# --- (3)  WebP kuralı  -----------------------------------------
+RewriteCond %{HTTP_ACCEPT} image/webp [NC]
+RewriteCond %{REQUEST_FILENAME}.webp -f
+RewriteRule (?i)^(.+)\.png$ $1.png.webp [T=image/webp,E=img:1,L]
+
+</IfModule>
+
+#  Vary: Accept (önbellekler için) -------------------------------
+<IfModule mod_headers.c>
+  Header append Vary Accept env=img
+</IfModule>
